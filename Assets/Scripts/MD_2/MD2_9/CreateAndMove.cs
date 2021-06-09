@@ -15,7 +15,7 @@ public class CreateAndMove : MonoBehaviour//Ej_1
     void Start()
     {
         Invoke("SpawnCubeSphere", 0.2f);//1ª partre del ejercicio
-        Invoke("DestroySphereAndCube", 0.5f);//Ej 2
+        //Invoke("DestroySphereAndCube", 0.5f);//Ej 2
 
         //spawnC = Instantiate(spawnC, transform.position, Quaternion.identity);//2ª parte ejer
 
@@ -30,18 +30,18 @@ public class CreateAndMove : MonoBehaviour//Ej_1
         EN EL PRIMER SCRIPT SE PONGA EN EL SPAWN2 UN EMPTY*/
     }
 
-    //void SpawnCubeSphere() //1ª parte del ejercicio.
-    //{
-    //    Instantiate(spawnC, new Vector3(-2, 0, 0), Quaternion.identity);
-    //    Instantiate(spawnS, new Vector3(2, 0, 0), Quaternion.identity);
-    //}
+    void SpawnCubeSphere() //1ª parte del ejercicio.
+    {
+        Instantiate(spawnC, new Vector3(-2, 0, 0), Quaternion.identity);
+        Instantiate(spawnS, new Vector3(2, 0, 0), Quaternion.identity);
+    }
 
-    //void DestroySphereAndCube() //Ej 2
-    //{
-    //    spawnC = GameObject.Find("Cubo(Clone)");
-    //    Destroy(spawnC);
-    //    spawnS = GameObject.Find("Esfera(Clone)");
-    //    Destroy(spawnS);
-    //}
+    void DestroySphereAndCube() //Ej 2
+    {
+        spawnC = GameObject.Find("Cubo(Clone)");
+        Destroy(spawnC);
+        spawnS = GameObject.Find("Esfera(Clone)");
+        Destroy(spawnS);
+    }
 }
 
