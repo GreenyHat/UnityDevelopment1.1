@@ -65,9 +65,43 @@ public class InstantiateAndDestroy : MonoBehaviour
 
         }
 
-        
 
+        /*A modo de apunte mental para el futuro y a modo de consulta, adjunto lo que creo que serían 
+         *otras soluciones para la función destruir que me dio problemas
+         *Una podría ser usando Tags y un foreach, como aquí:
+         *
+         *cubos = GameObject.FindGameObjectsWithTag("Player");
+       //Podria servir para el ejercicio del randomizer
+       //
+       //
+       //
+
+       Debug.Log(cubos.Length);
+       foreach (GameObject cubo in cubos)
+       {
+           Destroy(cubo, 1.2f);
        }
+        *otro método podría ser con un GetChild y haciendo un contador de los hijos:
+        *
+        *public GameObject destruibleObjects;
+	
+
+
+		for (int i = 0; i<miTransform.childCount;i++)
+		{
+		
+
+        destruibleObjects = this.gameObject.transform.GetChild(i).gameObject;
+        Destroy(destruibleObjects);
+
+    
+
+         }
+
+ 
+         */
+
+    }
 }
 
        
