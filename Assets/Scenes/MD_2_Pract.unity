@@ -394,6 +394,7 @@ GameObject:
   - component: {fileID: 1457296070}
   - component: {fileID: 1457296069}
   - component: {fileID: 1457296072}
+  - component: {fileID: 1457296073}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -473,7 +474,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1457296068}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5707fff31994c494c9d7684500692ef0, type: 3}
   m_Name: 
@@ -481,3 +482,27 @@ MonoBehaviour:
   enemy: {fileID: 5680486122434770719, guid: 6b65a5e1b6c734a69a385c7ff8e31542, type: 3}
   enemyCounter: 0
   countFinish: 0
+--- !u!114 &1457296073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457296068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0304fc892744eda85997a7c9b8a34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 1677015184}
+  enemies: []
+  enemyCounter: 0
+  countFinish: 0
+  enabledEnemy: 1
+  i: 0
+--- !u!1 &1677015184 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5680486122434770719, guid: 6b65a5e1b6c734a69a385c7ff8e31542,
+    type: 3}
+  m_PrefabInstance: {fileID: 78778272}
+  m_PrefabAsset: {fileID: 0}
