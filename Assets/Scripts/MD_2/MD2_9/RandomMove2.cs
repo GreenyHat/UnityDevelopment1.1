@@ -35,9 +35,9 @@ public class RandomMove2 : MonoBehaviour
 
         }
     }
-    void TranslateLeft()
+   /* void TranslateLeft()
     {
         transform.Translate(Vector3.left);
 
-    }
+    }*/
 }
