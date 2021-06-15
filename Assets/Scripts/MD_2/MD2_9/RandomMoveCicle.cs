@@ -9,7 +9,7 @@ public class RandomMoveCicle : MonoBehaviour
     [SerializeField]
     GameObject cube;
     [SerializeField]
-    bool firstMove = true;
+    bool firstMove;
     float speed;
 
 
@@ -18,20 +18,20 @@ public class RandomMoveCicle : MonoBehaviour
     /// No tengo muy claro cómo hacer lo que me pedia el ejercicio. 
     /// </summary>
 
+
+    void Start()
+    {
+        firstMove = true;
+    }
+
     void Update()
     {
         if (firstMove == true)
         {
-            cube.transform.Translate(Random.Range(-11.0f, 11.0f), /*Random.Range(-2.2f, 4.6f)*/0, 0);
+           cube.transform.Translate(Random.Range(1.4f, 8.7f), Random.Range(-2.2f,0.81f ), 0);
            firstMove = false;
         }
-        
-
-
-       else if (transform.position.x > 0 && firstMove == false)
-        {
-            transform.Translate(Vector3.left * speed * Time.deltaTime * Random.Range(10, 15));
-        }
+              
     }
 
     //private void OnBecameInvisible()

@@ -1,0 +1,482 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil Consolas;}{\f2\fnil\fcharset0 Consolas;}}
+{\colortbl ;\red192\green192\blue192;\red0\green0\blue255;\red0\green0\blue0;\red43\green145\blue175;\red0\green176\blue80;\red0\green128\blue0;\red163\green21\blue21;\red0\green128\blue64;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs32\lang10\par
+\ul\b\fs40 Estructuras de control:\ulnone\b0\fs32\par
+Condicionales:\par
+\par
+bucle \b While \b0 (Los ciclos de lectura se ejecutan todos por frame, no cada uno por frame --> \highlight1 ojo con esto!!)\par
+\highlight0 estructura:\highlight1\par
+\highlight0\i while (mientrasPaseX)\par
+\{\par
+Se ejecutae esto\par
+\}\par
+\i0\par
+bucle \b for \b0 (se compone de: declaracion, condici\'f3n y actualizaci\'f3n -->ejemplo: i=-10;  i<=10;  i+++ || i-- ) [esto significa que lo que hay dentro del \{cuerpo\} se ejecutar\'e1 mientras la condici\'f3n se cumpla, y se incrementar\'e1 de uno en uno (i++)])\par
+estructura:\par
+\i variable publica de clase: public int counter = 0;\par
+funcion Start:\par
+for (int i = 0;  i<=10;  i++)\par
+\{\par
+counter++ (esto lo que va a hacer es que se vea en el editor hasta que llegue al final del c\'f3digo [i<10], lo que nos ense\'f1ar\'e1 un 21 en counter consola 21 (porque cuenta el -10 y el 0 ) )\par
+\}\par
+\par
+\par
+\par
+\i0\par
+bucle \b foreach \b0 (est\'e1 pensado para colecciones, para arrays)\par
+\par
+estructura:\par
+\i variable publica de clase: public int[] numberArray = \{2,3,4,45,-5\};\par
+\par
+funcion Start:\par
+\{\par
+\b foreach \b0 (\b int temp\b0 [esto es una variable temporal y solo existe dentro de foreach,] \b in numberArray\b0 ) \par
+(lo que va a hacer este bucle es recorrer los indices del array, tomando la variable temporal, que act\'faa como "contenedor", cada uno de los valores de la cadena del array. Esto se utiliza mucho en VG para juegos de rol y establecer c\'f3mo afectan seg\'fan qu\'e9 ataques(array1) a seg\'fan qu\'e9 enemigos(array2) ) \par
+    \{  \par
+                    if(temp>9\line                             \{\par
+                               Debug.Log (temp)\par
+                            \}\par
+  \par
+\par
+   \}\par
+\}\par
+\i0\par
+\par
+bucle \b switch: \b0 este se utiliza para mostrar datos o ejecutar comandos si se dan ciertas caracter\'edsticas. Veamos su estructura:\par
+\par
+\i switch (a)\par
+\{\par
+case 2:\par
+Debug.Log("a vale dos")\par
+\b break; (break se usa para que salga del bucle)*se puede usar en otros buclesf\par
+\b0 case n:\par
+Debug.Log("a vale n")...\par
+\b break; \par
+\b0\par
+\par
+\}\par
+\par
+\par
+\ul\b\i0 variables usadas en unity:\ulnone\b0\par
+public GameObject cube;\par
+public Transform myTransform;\par
+public MeshFilter mesFilter;\par
+public Boxcollider boxCollider;\par
+public MeshRenderer meshRenderer;\par
+\par
+** Debug.Log(stringX + "" + stringY) --> esta es una manera recomendable de escribir espacios en c\'f3digo.\par
+\par
+** a++ =  a+=1  =   a=a+1\par
+ \par
+\par
+Los enumerados en programacion (clase):\par
+##parecido al array##\par
+\par
+sintax: public enum Brujula \{none, Norte, Sur, Este, Oeste\};\par
+#Que se puede hacer con esto??\par
+Podemos crear una variable del tipo "Brujula"\par
+(que queramos, para luego usarla) \par
+por ejemplo:\par
+ Brujula miDireccion = Brujula.Este; (si esto lo hiciera publico se me crear\'eda un menu desplegable en el editor con el valor Mi Direccion y desde ahi seleccionar en qu\'e9 eje cardinal me encuentro) \par
+Tambien puede usarse este valor en funciones, por ejemplo. Pongamos que quiero revertir el rumbo cada vez que me aparezca el valor Norte. P.Ej:\par
+\par
+\cf2\f1\fs19 public\cf3  \cf2 class\cf3  \cf4 testFunciones\cf3  : MonoBehaviour\par
+\{\par
+\par
+    \cf2 public\cf3  \cf2 enum\cf3  \cf4 Brujula\cf3  \{ none, Norte, Sur, Este, Oeste \};\par
+\f2\lang3082    \cf5 //definimos el enumerado a modo de array (paso1)\cf3\f1\lang10\par
+    Brujula miDireccion = Brujula.Norte;\par
+   \cf6 //Esto estabece el enumerado\f2\lang3082  (paso2)\cf3\f1\lang10\par
+\par
+    \cf2 void\cf3  Start() \par
+    \{\par
+        Debug.Log(\cf7 "Mi direccion actual es: "\cf3  + miDireccion);\par
+        RevertirDireccion(miDireccion);\par
+        Debug.Log(\cf7 "Mi direccion revertida es: "\cf3  + miDireccion);\line\par
+\f2\lang3082          \cf5 // llamamos a las funciones y comprobamos en consola que funcionan.(paso4)\cf3\f1\lang10\par
+\par
+\par
+\par
+    \}\par
+\par
+    \cf6 //Construimos la funcion\f2\lang3082  (paso3)\cf3\f1\lang10\par
+\par
+    Brujula RevertirDireccion(Brujula dir\cf5 )\par
+\f2\lang3082    //los parametros de entrada deben ser de tipo Brujula, dado que no es una funcion vacia. Creamos una variable temporal que representa al tipo Brujula que se pone arriba, en este caso miDireccion, que est\'e1 inicializada con valor Norte, por lo que se ejecuta la reversion\cf3\f1\lang10\par
+    \{\par
+        \cf2 if\cf3  (dir==Brujula.Norte)\cf5\f2\lang3082 //s\cf3\f1\lang10\par
+        \{\par
+            miDireccion = Brujula.Sur;\par
+            \par
+        \}\cf2 return\cf3  dir;\par
+    \}\par
+\par
+\}\cf0\f0\fs32\par
+\par
+\par
+----------------------------------------------------------------------------------\par
+\par
+Clases:\par
+Que es POO: es un lenguaje que me permite definir distintos objetos y describir sus caracteristicas, lo que me permite ir construyendo objetos de ese tipo (con esa clase).\par
+En Unity se pueden crear clases personalizadas para utilizarlas a modo de "tipo de objetos", por ejemplo puedo crear una clase propia para coches -sin la clase padre Monobehaviour- y dotarla de caracteristicas a las que luego llamar\'e9 en la clase Carretera, poniendo el Script en algun objeto de la escena en el editor. Siguiendo con lo anterior, en la clase coche dar\'e9 a mi clase una serie de caracteristicas, por ejemplo:\par
+string marca; \par
+int cantidadRuedas;\par
+int cantidadPuertas;\par
+en las siguientes lineas de codigo establecer\'e9 los metodos para que funcione en el script de la clase carretera, como podr\'eda ser:\par
+void EnderderMotor()\par
+\{\par
+Debug.Log ("el motor esta encendido")\par
+\}\par
+\par
+void ApagarMotor()\par
+\{\par
+Debug.Log ("el motor esta apagado")\par
+\}\par
+***Sin embargo aqu\'ed no las llamar\'e9, ya que lo que estoy haciendo es darle las caracter\'edsticas que yo estoy decidiendo que tiene al coche que voy a usar como objeto en otra clase (Carretera), donde inicializar\'e9 esos valores, accediendo a sus propiedades con '' . '' como veremos m\'e1s adelante.\par
+Script de la clase Coche:\par
+\cf2\f1\fs19 using\cf3  UnityEngine;\par
+\cf2 using\cf3  System.Collections;\par
+\par
+\cf2 public\cf3  \cf2 class\cf3  \cf4 Coche\cf3  \{\par
+\par
+\tab\cf2 public\cf3  \cf2 string\cf3  marca;\par
+\tab\cf2 public\cf3  \f2\lang3082 cantidadR\f1\lang10 uedas\f2\lang3082 ;\f1\lang10\par
+\tab\cf2 public\cf3  \f2\lang3082 cantidadPuertas;\f1\lang10\par
+\par
+\tab\cf2 public\cf3  \cf2 void\cf3  EncenderMotor()\par
+\tab\{\par
+\tab\tab Debug.Log(\cf7 "El motor esta encendido"\cf3 );\par
+\tab\}\par
+\par
+\tab\cf2 public\cf3  \cf2 void\cf3  ApagarMotor()\par
+\tab\{\par
+\tab\tab Debug.Log(\cf7 "El motor esta apagado"\cf3 );\par
+\tab\}\par
+\}\par
+\cf0\f0\fs32\par
+\par
+Script de la clase Carretera:\par
+\par
+\cf2\f1\fs19 using\cf3  UnityEngine;\par
+\cf2 using\cf3  System.Collections;\par
+\par
+\cf2 public\cf3  \cf2 class\cf3  \cf4 Carretera\cf3  : MonoBehaviour \{\par
+\par
+\tab Coche miCoche;\par
+\par
+\tab\cf6 // Use this for initialization\cf3\par
+\tab\cf2 void\cf3  \cf2 Start\cf3  () \par
+\tab\{\par
+\tab\tab CrearCoche();\par
+\tab\tab miCoche.EncenderMotor();\par
+\tab\tab Debug.Log(\cf7 "Mi coche es marca "\cf3  + miCoche.marca);\par
+\tab\tab Debug.Log(\cf7 "Mi coche tiene "\cf3  + miCoche.puertas.cantidad + \cf7 " puertas"\cf3 );\par
+\tab\tab Debug.Log(\cf7 "Mi coche tiene "\cf3  + miCoche.ruedas.cantidad + \cf7 " ruedas"\cf3 );\par
+\par
+\tab\tab\cf6 // Debug log de todas las propiedades de la clase coche\cf3\par
+\tab\tab ApagarMotorCoches();\par
+\tab\}\par
+\par
+\tab\cf2 void\cf3  CrearCoche()\par
+\tab\{\par
+\tab\tab miCoche = \cf2 new\cf3  Coche();\par
+\tab\tab miCoche.marca = \cf7 "Ford"\cf3 ;\par
+\tab\tab miCoche.\f2\lang3082 cantidadPuertas\f1\lang10 = 4;\par
+\tab\tab miCoche.cantidad\f2\lang3082 Ruedas\f1\lang10  = 4;\par
+\tab\tab\par
+\par
+\tab\}\par
+\par
+\tab\cf2 void\cf3  ApagarMotorCoches()\par
+\tab\{\par
+\tab\tab miCoche.ApagarMotor();\par
+\tab\}\par
+\}\par
+\par
+\cf2\par
+\par
+\par
+\cf0\f2\lang3082 ------------------------------------------------------------------------------\par
+
+\pard\sa200\sl276\slmult1\qc\ul\b\f0\fs32 Mecanicas de videojuegos:\par
+
+\pard\sa200\sl276\slmult1\ulnone\b0\par
+\lang10                    Apuntes sobre la clase padre Monobehaviour: \par
+    (PARA REFRESCAR MIRA SOLO LOS EJEMPLOS AL FINAL DE CADA SECCION <Udemy>)\par
+\par
+EVENTOS PRINCIPALES:\par
+\par
+-Metodo print: escribe en consola igual que Debug.Log (esta dentro de Start)\par
+-Evento \highlight1\i Start\highlight0\i0 : todo lo que este dentro sera lamado al inicio del primer fotograma\par
+-Evento \highlight1\i Update\highlight0\i0 : es llamado una vez por fotograma\par
+-Evento \highlight1\i Awake\highlight0\i0 : es llamado al inicio de todo, incluso antes que el evento Start. \par
+-Evento \highlight1\i FixedUpdate\highlight0\i0 : es llamado antes que update, incluso varias veces por fotograma si es necesario. Por ejemplo se podria utilizar para evitar multiplicar los valores mediante el script timeDeltaTime, ya que se llama al evento en un temporizador fijo.\par
+-Evento \highlight1\i LateUpdate\highlight0\i0 : es llamado a cada fotograma despues de Update, es decir se crea dentro del evento Update. Un uso com\'fan para este evento puede ser una camara en 3 persona. Al hacer que se mueva tu personaje, puedes realizar todos los calculos de movimiento de la camara en erl evento L ateUpdate, asi te aseguras de que tu personaje se haya movido antes (mediante Update) de que la camara rastree tu posicion.\par
+      \highlight1 -Orden de ejecucion en funciones de evento: \par
+\highlight0            Awake,Start,FixedUpdate,Update,LateUpdate. \par
+Awake se ejecuta aunque el Script en el que est\'e9 el evento est\'e9 desactivad; el evento Start se suele usar para inicializar variables, componentes...; FixedUpdate se utiliza para los calculos de fisica (velocidad, fuerza... se inserta en este evento); update puede ser utilizado por ejemplo, para el movimiento del player; lateUpdate, como se dijo antes se usa para que algo despues del update le continue, como pudiera ser que la camara siga al jugador en sus movimientos.\par
+\par
+----------------------------------------------------------------------------------\par
+\par
+EVENTOS DE OBJETO:\par
+\par
+\par
+-Evento \highlight1\i OnEnable\highlight0\i0 : es llamado cuando el objeto se habilita y se activa (cuando el juego este en marcha)\par
+-Evento \highlight1\i OnDisable\highlight0\i0 : es llamado cuando el obj se deshabilitay se desactiva (cuando el juego este en marcha)\par
+-Evento \highlight1\i OnDestroy\highlight0\i0 : es llamado cuando se destruye el script que contiene ese comportamiento. Por ejemplo: \par
+Imaginemos que queremos que cuando destruyamos una caja aparezca un lingote, lo que deberiamos hacer es elaborar el script OnDestroy y dentro del cuerpo del script (que debe estar dentro del objeto '"cofre" y junto a una variable de clase que contenga la variable "lingote") crear mediante la funcion Instantiate(lingote) el lingote anteriormente declarado. \par
+\par
+----------------------------------------------------------------------------------\par
+EVENTOS DE RATON: \par
+\par
+-Evento \highlight1\i OnMouseEnter\highlight0\i0 : es llamado cuando el raton entra en un elemento GUI (como un boton) o un Collider.*si se usa junto al evento OnMouseOver tengase en cuenta que el primero se ejecutara durante una milesima de segundo.\par
+-Evento \highlight1\i OnMouseOver\highlight0\i0 : es llamado mientras el raton este en contacto con un elemento GUI o Collider\par
+-Evento \highlight1\i OnMouseExit\highlight0\i0 : es llamado cuando el raton sale del elemento GUI o Collider.\par
+**Se pueden usar todos los eventos que se quiera mientras se respete el orden anteriormente establecido.**\par
+-Evento \highlight1\i OnMouseDown\highlight0\i0 : es llamado cuando el raton se ha presionado sobre un elemento GUI o Collider.\par
+-Evento \highlight1\i OnMouseDrag\highlight0\i0 :  es llamado cuando el raton semantiene pulsado sobre un elemento GUI o Collider.\par
+-Evento \highlight1\i OnMouseUp\highlight0\i0 :  es llamado cuando el raton se deja de presionar el raton.\par
+-Evento \highlight1\i OnMouseUpAsButton\highlight0\i0 : es llamado cuando se suelta el rat\'f3n sobre el mismo GUI o Collider que se presion\'f3.\par
+\par
+---------------------------------------------------------------------------------------------------------------------------\par
+EVENTOS DE COLISION: \par
+\par
+-Evento \highlight1\i OnCollisionEnter\highlight0\i0 : es llamado cuando un Colisionador(cuerpo r\'edgido) entra en contacto con este colisionador(cuerpo 'rigido). Sintaxis>> void OnCollisionEnter(Collision otroObj)\par
+\{ Destroy(otroObj.gameObject);\par
+\}\par
+-Evento \highlight1\i OnCollisionStay\highlight0\i0 : es llamado cuando un Colisionador este en contacto con este colisionador.\par
+-Evento \highlight1\i OnCollisionExit\highlight0\i0 : es llamado cuando un Colisionador pierd el contacto con este colisionador.\par
+\par
+----------------------------------------------------------------------------------\par
+EVENTOS DE DISPARADOR\par
+**Cuando hablamos de disparadores hablamos de la funcion I Trigger que hay en el editor dentro del componente Collider, al seleccionarlo, lo convertimos en disparador.**\par
+-Evento \highlight1\i OnTriggerEnter\highlight0\i0 : es llamado cuando un Colisonador entra en contacto con el disparador. Sitaxis>> (lo que hara este script es que por cada vez que el oobjeto colisione sume uno al contador.)\par
+int nCols;\par
+void \highlight1\i OnTriggerEnter()\highlight0\i0\par
+\{print(nCols++);\par
+\}\par
+-Evento \highlight1\i OnTriggerStay\highlight0\i0 : es llamado cuando un Colisionador permanece en contacto con un disparador.\par
+-Evento \highlight1\i OnTriggerExit\highlight0\i0 : es llamado cuando un Colisionador pierde el contacto con el disparador.\par
+\par
+\par
+----------------------------------------------------------------------------------\par
+M\'c9TODOS DE INVOCACION\par
+\par
+-Metodo \highlight1\i Invoke\highlight0\i0 : invoca a un metodo/funcion por su nombre con un tiempo de retraso.\par
+Sintaxis: Invoke("nombre metodo", tiempo de retrasof). \par
+P.ej>> \par
+Start()\par
+Invoke("Destruir", 2.0f)\par
+void Destruir()\par
+\{\par
+     Destroy(this.gameObject)\par
+\}\par
+-Metodo \highlight1\i InvokeRepeating\highlight0\i0 : este metodo invoca a un metodo por su nombre con un tiempo de retraso y luego cada x segundos. InvokeRepeating(Xnombre, segundos de retraso, frecuencia de repetici\'f3n)\par
+\par
+-Metodo \highlight1\i CancelInvoke\highlight0\i0 : este metodo cancela todas las llamadas de Invoke en el Script que este.\par
+\par
+\par
+\par
+\highlight1 -Acceder a GameObjects:\highlight0\par
+Si el Script no esta en el GO, mediante arrastrar desde el editor, con lo que podr\'edamos acceder a dicho GO sin necesidad de declararlo, lo que deber\'edamos hacer es precisamente eso, declararlo: public GameObject xName; \par
+independientemente del modo de acceso al GO, en la funcion Start( pondremos gameObject. \{el punto nos dar\'e1 acceso a todas las propiedades con las que puedo trabajar, por ejemplo print (gameObject.name);(en el caso de que el GO tenga el script como component)/Xname.name(si lo hemos en inicializado en el script)--> lo que nos dar\'e1 acceso al nombre del GO \})\par
+Una funcionalidad interesante es la de buscar GO mediante un array que recopile GO con un tag en especifico. Por ejemplo, si quiero buscar todos los objetos que tengan la etiqueta player\par
+la sintaxis seria la siguiente.\par
+como variable de clase pongo el siguiente array: public GameObject[] xName; luego en el Start pongo: \par
+xName = GameObject.FindGameObjectsWithTag("Player");\par
+ese script alamacenar\'e1 todos los GO con dicha etiqueta.\par
+\par
+\par
+\highlight1 -Components:\par
+\highlight0 Los componentes son las caractersiticas f\'edsicas de los GO.\par
+**del mismo modo que accedemos a las propiedades de los GO a trav\'e9s del "punto", podemos accedes a la propiedades de los componentes del GO. Por ejemplo:  gameObject/xName.transform.position/rotation/scale.x/y/z; \par
+\par
+  ***Para acceder a los componentes que no sean transform:\par
+ 1- Declarar una variable del tipo de componente (por ejemplo: public BoxCollider Xname;).\par
+\par
+2- Guardar la info de dicha variable (por ejemplo:\par
+Xname = GetComponent<Boxcollider>();)\par
+\par
+3- Una vez hecho los dos pasos anteriores ya puedo acceder a las propiedades de dicho component mediante el "punto".\par
+\par
+------------------------------------------------------------------------------------------------\par
+Comunicacion entre GO y Scripts:\par
+\par
+Si desde un Objeto (en este caso un Script) que porta un GO distinto al GO sobre el que quiero trabajar, lo que me hace falta es referenciarlo. Sintaxis: \par
+(en la clase donde quiero trabajar)\par
+\fs24 public GameObject refGO; \par
+public NombreObjeto (clase en este caso, ya que es un Script) refObjeto;\par
+\par
+\par
+\fs32 Start()\par
+es importante mantener el orden, porque de lo contrario nos dara error. Sintaxis:\par
+\par
+1)Busco el GO. Utilizo la variable de tipo GO para buscar el GO con el que me interesa trabajar.\par
+   refGO = GameObject.Find("NombreGO");\par
+\par
+2)Una vez dentro del GO utilizo la variable refObjeto, del script que yo quiero trabajar de ese GO en este caso, para acceder a sus datos, luego pondre un ejemplo practico.\par
+refObjeto = refGO.GetComponent<NombreGO>();\par
+\par
+3)Ya tendriamos la comunicacion establecida, ahora se podria empezar a solitar info de un GO a otro mediante script. luego veremos en el ejemplo practrico\par
+Ej: Si quiero saber en que estado esta el GO(B) para que interactue con el GO(A) sobre el que estoy trabajando hariamos lo siguiente, imaginemos que quiero que mi objeto Player(A) actue sobre mi objeto Pared(B) para que la elimine de la escena cuando se desactive:\par
+\par
+\cf2\f1\fs19 public\cf3  \cf2 class\cf3  \cf4 Player\cf3  : MonoBehaviour \{\par
+\par
+\tab\cf2 public\cf3  GameObject paredGO;\par
+\tab\cf2 public\cf3  Pared paredScript;\par
+\par
+\tab\cf2 void\cf3  Start () \{\par
+\par
+\tab\tab paredGO = GameObject.Find(\cf7 "Pared"\cf3 );\cf6 //Primero busco el objeto con el que quiero trabajar \cf3\par
+\tab\tab paredScript = paredGO.GetComponent<Pared>();\cf6 //Luego me meto en el objeto y trabajo con el\cf3\par
+\par
+\tab\par
+\tab\}\par
+\tab\par
+\tab\cf6 // Update is called once per frame\cf3\par
+\tab\cf2 void\cf3  Update () \{\par
+\par
+\tab\tab\cf2 if\cf3  (paredScript.paredActiva == \cf2 false\cf3 )\par
+\tab\tab\{\par
+\tab\tab\tab paredGO.SetActive(\cf2 false\cf3 );\par
+\tab\tab\}\par
+\tab\par
+\tab\}\par
+\}\par
+\cf0\f0\fs32\par
+------------------------------------------------------------------------------------------------\par
+\cf2\f1\fs19\lang3082 public\cf3  \cf2 class\cf3  \cf4 Pared\cf3  : MonoBehaviour \{\par
+\par
+\tab\cf2 public\cf3  \cf2 bool\cf3  paredActiva = \cf2 true\cf3 ;\par
+\}\f2  \f1\par
+\cf0\f0\fs32    ---------------------------------------------------------------------------------------------\par
+Clase Object:\par
+Descripcion:\par
+Los Objects, entre otras cosas, son components de los GO, a su vez, los components son instancias de la clase que lo lleva, por tanto podemos referenciarlos y acceder a ellos con codigo. \par
+\par
+Fundamentalmente esta clase nos sirve para buscar y almacenar informacion de los GO y de sus componentes: buscar GOs con tal o cual componente(objeto) con: \cf3\f2\fs19 Object.FindObjectsOgType(typeof (ElNombreDelObjeto)) as ElNombreDelObjeto[];\par
+\cf0\f0\fs32 Con la anterior linea de codigo lo que haremos sera almacenar en un array todos los GOsque tengan ese tipo de Object (componente) \par
+Esto ahora mismo no tengo ni puta idea de para que servira pero ya iremos viendo funcionalidades. En resumen con esta clase puedes navegar por los componenetes hasta el nombre del GO que lleva el Script indicado y obtener datos y almacenarlos. Por ejemplo una funcion podria ser recorrer todos los elementos que tengan ese Component, almacenarlos en el array y despues, si estuviera con el SetActive=false, ponerlo en true.\par
+   ---------------------------------------------------------------------------------------------\par
+Clase Tranform:\par
+Para evitar tener que llamar constantemente a GetComponent, y asi optimizar el rendimiento, es mejor referenciar una funcion que sabemos que vamos a utilizar, en est caso Transform, y llamar a la referencia. Antes de ello claro, hay que elaborarlo de forma local. Por ejemplo:\par
+\par
+\cf2\f1\fs19 public\cf3  \cf2 class\cf3  \cf4 Transformaciones\cf3  : MonoBehaviour \{\par
+\par
+\par
+\cf6\tab\cf0 private Transform thisTransform = null;\f2  \cf6 // Componente inicializado. Se pone en null, para que cuando arranque el juego empieza en null. porque si lo inicializo con valores y el componenete no esta cargado cuando arranca el juego, me puede dar error. VIQ**\cf0\f0\fs32\par
+\par
+\cf2\f1\fs19 void\cf3  \cf2 Start\cf3  () \par
+\tab\{\cf0\f0\fs32\par
+\par
+\f1\fs19 thisTransform = GetComponent<Transform>();\f2  \cf8 //Referencia almacenada\cf0\f1\par
+thisTransform.position = new Vector3(2,2,2\cf8 );\f2 //Empezamos a trabajar con ese objeto\f0\fs32\par
+\cf0\fs19\lang10\}\par
+\}\par
+\par
+\fs32 Esa ser\'eda la clase a instanciar, para poder trabajar con ella a nivel externo, ademas de localmente.\par
+\par
+\cf2\f1\fs19 public\cf3  \cf2 class\cf3  \cf4 Transformaciones\cf3  : MonoBehaviour \{\par
+\par
+\par
+    \cf2 private\cf3  Transform thisTransform = \cf2 null\cf3 ;\f2\lang3082  \cf8 --> esto es para almacenar abajo en el Start la ultima posicion del objeto que lleve el script.\cf5\f1\lang10\par
+\cf3\tab\cf2 public\cf3  GameObject otroGO;\par
+\tab Transform transformOtroGO;\f2\lang3082  \cf8 //Esto es para acceder a otro GO y a otro transform para diferenciarlo de la posicion del primero.\cf0\f0\fs32\lang10\par
+\par
+\cf2\f1\fs19 void\cf3  \cf2 Start\cf3  () \par
+\tab\{\par
+\par
+\tab\tab\par
+\tab\tab thisTransform = GetComponent<Transform>();\cf8\f2\lang3082 //Asignamos el componente transform a la variable de tipo transform.\cf3\f1\lang10\par
+\tab\tab\par
+\tab\tab otroGO = GameObject.Find(\cf7 "CuboRojo"\cf3 );\cf8\f2\lang3082 //Describimos como se llama el objeto que vamos a buscar (podr\'edamos llamarlo con otro m\'e9todo)\cf3\f1\lang10\par
+\tab\tab transformOtroGO = otroGO.GetComponent<Transform>();\cf8\f2\lang3082 //Le asignamos el otro Transform\cf3\f1\lang10\par
+\tab\tab transformOtroGO.position = \cf2 new\cf3  Vector3(-2,-2,-2);\par
+\par
+\par
+\tab\}\par
+\f2\lang3082\}\f1\lang10\par
+\cf0\f0\fs32\par
+De esta manera hacemos lo mismo que en la anterior ejemplo pero de forma externa, buscando el GO llamado "CuboRojo".\par
+**Notese el orden de elaboracion ya que es importante: primero almaceno el nombre del GO sobre el que quiero trabajar, y despues elaboro lo que quiero hacer con \'e9l.\par
+\par
+\lang3082    ---------------------------------------------------------------------------------------------\par
+\lang10 Clase Transform y Jerarqu\'edas:\par
+Si tengo una jerarquia puesta en Unity, con unos GOs y su GO padre, y por ejemplo quiero acceder al dato del numero de hijos que tiene, se haria de la siguiente manera:\par
+\par
+\cf2\f1\fs19 public\cf3  \cf2 class\cf3  \cf4 Jerarquias\cf3  : MonoBehaviour \{\par
+\par
+\tab\cf2 public\cf3  Transform miTransform;\par
+\par
+\tab\cf6 // Use this for initialization\cf3\par
+\tab\cf2 void\cf3  Start () \{\par
+\par
+\tab\tab miTransform = GetComponent<Transform>();\par
+\par
+\tab\tab\cf2 for\cf3  (\cf2 int\cf3  i = 0; i<miTransform.childCount;i++)\f2\lang3082  \cf6\f1\lang10 /\f2\lang3082 /aqui elaboro lo que quiero que pase, en este caso, empezando desde 0 quiero que porcada hijo que tenga asignado el GO en el que se encuentra--> miTransform, a\'f1ada uno al contador de hijos.\cf3\f1\lang10\par
+\tab\tab\{\par
+\tab\tab\tab Transform hijoTransform = miTransform.GetChild(i);\cf6 //\f2\lang3082  aqui lo que quiero es que almacene los hijos de miTransform en una variable temporal (hijoTransform)\cf3\f1\lang10\par
+\tab\tab\tab Debug.Log(hijoTransform.gameObject.name);\cf6 //\f2\lang3082 notese aqui que cuando escribo el proceso de acceso a la info va de abajo a arriba --> primero la variable temporal que acabo de realizar y despues el tipo de variable y despues el bombre de la variable en la escena\cf3\f1\lang10\par
+\tab\tab\}\par
+\tab\par
+\tab\f2\lang3082    \f1\lang10\}\par
+\tab\par
+\tab\}\par
+\cf0\f0\fs32\par
+Con esto podria cambiar valores de los hijos o de un hijo en especifico, lo cual puede ser interesante para agilizar el workflow.\par
+\par
+\lang3082 ---------------------------------------------------------------------------------------------\par
+Transformaciones en Update: \par
+En el Update, como ya hemos visto en unidades anteriores, los procesos se actualizan frame*frame. Esto puede ser interesante para poner script que generen "movimiento" como por ejemplo:\par
+\cf2\f1\fs19\par
+public\cf3  \cf2 class\cf3  \cf4 Movimiento\cf3  : MonoBehaviour \{\par
+\par
+\tab\cf2 private\cf3  Transform miTransform = \cf2 null\cf3 ;\par
+\tab\cf2 public\cf3  \cf2 float\cf3  velocidad;\par
+\par
+\tab\cf6 // Use this for initialization\cf3\par
+\tab\cf2 void\cf3  \cf2 Start\cf3  () \{\par
+\par
+\tab\tab miTransform = GetComponent<Transform>();\par
+\f2        \}\f1\par
+\tab\cf2\par
+void\cf3  \cf2 Update\cf3  () \{\par
+\par
+\tab\tab miTransform.position += \cf2 new\cf3  Vector3 (0,0,1 * velocidad);\cf6 //\f2 el problema con esto es que cada pc tiene una tasa de fps que depender\'e1 del equipo que tenga. Eso generar\'eda errores, pero hay una manera de arreglarlo. el valor de velocidad habr\'eda que multiplicarlo a su vez por una clasa muy usada que se llama Time y utilizar la propiedad deltaTime --->\cf3\f1 miTransform.position += \cf2 new\cf3  Vector3 (0,0,1 * velocidad\f2  * Time.deltaTime\f1 )\f2 ;\cf6\f1 /\f2 / esto lo que va a hacer es que coger\'e1  los valores que estamos usando de frames y velocidad y los va a distribuir de segundo en segundo, solucionando asi la diferencia de potencias entre unos equipos y otros. \cf3\f1\par
+\tab\par
+\tab\}\cf0\f0\fs32\par
+---------------------------------------------------------------------------------------------\par
+Trasladar y rotar vectores especificos:\par
+\par
+\cf2\f1\fs19 public\cf3  \cf2 class\cf3  \cf4 Movimiento\cf3  : MonoBehaviour \{\par
+\par
+\tab\cf2 public\cf3  \cf2 float\cf3  velocidad;\par
+\tab\cf2 public\cf3  \cf2 float\cf3  velocidadRotacion;\par
+\par
+\tab\cf6 // Use this for initialization\cf3\par
+\tab\cf2 void\cf3  Start () \{\par
+\par
+\tab\tab miTransform = GetComponent<Transform>();\par
+\tab\par
+\tab\}\par
+\tab\par
+\tab\cf6 // Update is called once per frame\cf3\par
+\tab\cf2 void\cf3  Update () \{\par
+\par
+\tab\tab miTransform.Translate(Vector3.forward * velocidad * Time.deltaTime);\par
+\tab\tab miTransform.Rotate(Vector3.up * velocidadRotacion * Time.deltaTime);\par
+\tab\tab\par
+\tab\par
+\tab\}\par
+\}\par
+\cf0\f0\fs32 Aqu\'ed ya ponemos todo sobre la mesa, observese lo siguiente:\par
+El orden de acontecimientos: primero describimos variables, en el Start llamamos a la referencia de la Transform para usar el componente(Object), de manera externa, ya que esta en otro Script y reciclar la variable, y por ultimo en el Update describimos qu\'e9 queremos que se realice en el Script. En este caso que cada segundo se multiplique la velocidad de avance y la de rotaci\'f3n ascendente (como son variables publicas las podemos modificar desde el inspector).\par
+---------------------------------------------------------------------------------------------\par
+Clase Collider:\par
+ Es la clase base de todos los colliders -->BoxCollider, SphereCollider, CapsuleCollider, MeshCollider, PhysicMaterial, Rigidbody\par
+Esta clase es interesante para desembocar eventos de disparador  (Trigger). Cuando dos o m\'e1s collider colisionan y uno o m\'e1s de uno tienen activado Is Trigger, adem\'e1s de Rigidbody suceden los eventos que escribamos en cada uno de los eventos, por ejemplo: OnTriggerEnter, OnTriggerStay, OnTriggerExit. \par
+\par
+\lang10\par
+}
+ 

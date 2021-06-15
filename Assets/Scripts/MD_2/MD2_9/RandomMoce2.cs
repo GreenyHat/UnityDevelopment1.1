@@ -13,38 +13,75 @@ public class RandomMoce2 : MonoBehaviour
     /// </summary>
 
 
-   
 
-    public float speed;
+
+    /*public float speed;
     bool canSee = true;
     public Camera cam;
     public float xPoint;
-    float limitX;
+    public float yPoint;
     float limitY;
+    Vector3 xVector;*/
 
+    public float limitY;
+ 
+    public float limitX;
+   
+    public bool firstMove;
+    public float movingX;
     void Start()
     {
-        limitY = gameObject.transform.position.y;
-        cam = Camera.main;
+       
+        firstMove = true;
+        limitY = 8.545f;
+        limitX=1.449F;
+
+        
+   
+
+
+        /*        cam = Camera.main;
+        */
     }
 
     void Update()
     {
-        //xPoint = cam.WorldToScreenPoint(new Vector3(2.4f, 4.45f));
+        movingX = transform.position.x;
+
+
+        transform.Translate(Vector3.left * Random.Range(-1f, -1.7f) * Time.deltaTime);
+
     }
 
-    private void OnBecameVisible()
+    void moveX()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
-        canSee = false;
+        if (movingX<=9)
+        {
+
+        }
+        if (limitX >= 8.279f && firstMove == false)
+        {
+            transform.Translate(Vector3.left  * Random.Range(1f,1.7f) * Time.deltaTime);
+        }
+    }
+
+    private void OnBecameInvisible()
+    {
+        if (true)
+        {
+
+        }
     }
 
 
 
-    
-        //if (canSee == false)
-        //{
-        //   transform.Translate(Vector3.left* speed * Time.deltaTime);
+    /* private void OnBecameVisible()
+     {
+        transform.Translate(xVector * speed * Time.deltaTime);
+        canSee = false;
+     }*/
+
+    //xPoint = cam.WorldToScreenPoint(new Vector3(2.4f, 4.45f));
 
 }
 
