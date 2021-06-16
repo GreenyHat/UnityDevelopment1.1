@@ -30,4 +30,18 @@ public class UltimasPuntualizaciones : MonoBehaviour
     }
 
     //Repaso de las corrutinas--> TestCoroutine.cs
+    //***Si solo voy a poner una linea NO  hace falta abrir llave en los condicionales.
+    //private void OnLevelWasLoaded(int level) ES UNA FUNCION QUE TAMBIEN SE TRANSFORMA EN CORRUTINA SI QUEREMOS
+    //sirve para ejecutar codigo cuando cargue una determinada escena mediante numeros
+    //Las escenas son arrays a nivel interno.
+    //si la tenemos asignada en buildSettings. La estructura seria la siguiente:
+    private void OnLevelWasLoaded(int level)
+    {
+        if (level == 0)
+        Debug.Log("Aqui va a pasar todo lo que pongamos");
+    }
+
+
+
+
 }
