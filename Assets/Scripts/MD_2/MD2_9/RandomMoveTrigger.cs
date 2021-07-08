@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomMove : MonoBehaviour
+public class RandomMoveTrigger : MonoBehaviour
 {
     public bool canLeft, canUp;
-    public float speed=20f;
-  
+    public float speed = 20f;
+
 
     private void Start()
     {
-        
+
+
         RandomBegin();
     }
 
     private void Update()
     {
-       
         XvectorManager();
         YvectorManager();
     }
@@ -60,10 +60,10 @@ public class RandomMove : MonoBehaviour
 
 
 
-      
 
 
-        
+
+
     }
     public void YvectorManager()
     {
@@ -81,7 +81,7 @@ public class RandomMove : MonoBehaviour
         {
             if (transform.position.y < 2.15f)
             {
-               transform.Translate(0, 0.12f * Time.deltaTime * speed, 0);
+                transform.Translate(0, 0.12f * Time.deltaTime * speed, 0);
             }
 
 
@@ -93,40 +93,32 @@ public class RandomMove : MonoBehaviour
 
         }
 
-       
-                
 
 
-        
+
+
+
     }
     public void RandomBegin()
     {
         transform.Translate(Random.RandomRange(-4f, 4f), Random.RandomRange(2f, 2.15f), 0);
     }
 
-    private void OnTriggerEnter(Collider other)//TRATA DE COMPRENDER QUE HAS HECHO AQUÍ!!!
+
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Hello Not Trigger");
-        if (canLeft == true)
+        Debug.Log("Hello Trigger");
+        if (canLeft == false)
         {
-            canLeft = false;
+            canLeft = true;
         }
-        if (canUp == true)
+        if (canUp == false)
         {
-            canUp = false;
+            canUp = true;
         }
-       
 
+
+      
     }
-/*PARA EL EJERCICIO 8 TIENES QUE PONER ESTE SCRIPT EN UN GAMEOBJECT Y EL RANDOMMOVETRIGGER EN OTRO QUE SEA TRIGGER*/
 
-
-    /*VECTOR SCREEN LIMIT:
-     * x 5.433f
-     *-x-5.24f
-     * y 2.092f
-     *-y-2.224 */
 }
-
-   
-
