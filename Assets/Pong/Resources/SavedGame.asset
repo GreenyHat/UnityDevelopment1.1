@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5086e2b81e433a4fbb3358d8e4af075, type: 3}
+  m_Name: SavedGame
+  m_EditorClassIdentifier: 
+  ballVelocity: {x: 0, y: 0}
+  ballPosition: {x: 0, y: 0}
+  playerPosition: {x: 0, y: 0}
+  aiPosition: {x: 0, y: 0}
+  playerScale: {x: 0, y: 0}
+  aiScale: {x: 0, y: 0}
+  playerSpeed: 0
+  aiSpeed: 0
+  aiScore: 0
+  playerScore: 0

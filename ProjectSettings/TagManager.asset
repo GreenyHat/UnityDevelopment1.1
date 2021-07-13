@@ -4,8 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Npc
-  - Proofs
+  - BORDERS
+  - BALL
+  - PADDLE
+  - POWERUP
+  - Ball
+  - AI
   layers:
   - Default
   - TransparentFX
@@ -15,9 +19,9 @@ TagManager:
   - UI
   - 
   - 
-  - Test
-  - 
-  - 
+  - Border
+  - Paddle
+  - Powerup
   - 
   - 
   - 
