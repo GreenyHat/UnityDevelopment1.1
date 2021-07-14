@@ -17,7 +17,7 @@ public class SecondPaddleController : MonoBehaviour
     {
         /*verticalInput = Input.GetAxis("Horizontal");
         transform.Translate(speed * Time.deltaTime * Vector3.right * verticalInput);*/
-
+/*
         if (Input.GetKey(KeyCode.W))
         {
             transform.Translate(speed * Time.deltaTime * Vector3.right);
@@ -26,7 +26,7 @@ public class SecondPaddleController : MonoBehaviour
         else if (Input.GetKey(KeyCode.S))
         {
             transform.Translate(speed * Time.deltaTime * Vector3.left);
-        }
+        }*/
 
     }
 }
